@@ -1,2 +1,14 @@
 <app-header [mainTitle]="title" [drawer]="drawerRef"></app-header>
-<app-sidenav (setSidenavControl)="setSidenav($event)"></app-sidenav>
+<app-sidenav [title]="title" (setSidenavControl)="setSidenav($event)">
+  <ng-template #content>
+    <ng-container *ngIf=" products$ | async as products; else loader">
+      <ng-container *ngFor="let product of products; index  as i; odd as isOdd">
+        <div [ngClass]="{background: isOdd }">  {{i + 1}}. {{product.title}} - {{product.price  | currency }}</div>
+      </ng-container>
+    </ng-container>
+    <ng-template #loader>
+      loader .......
+    </ng-template>
+  </ng-template>
+  <!-- <router-outlet>-->
+</app-sidenav>
