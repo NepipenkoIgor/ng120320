@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { IProduct, products$ } from './products';
 import { Observable } from 'rxjs';
+import { MatCheckboxChange } from '@angular/material/checkbox';
 
 @Component({
   selector: 'app-root',
@@ -11,6 +12,8 @@ import { Observable } from 'rxjs';
 export class AppComponent implements OnInit {
   public title = 'Ng APP';
   public drawerRef: MatSidenav;
+  public searchText: string;
+  public onlyFavorite: boolean;
   public img = 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Angular_full_color_logo.svg/1200px-Angular_full_color_logo.svg.png';
 
   public products$: Observable<IProduct[]> = products$;
@@ -23,5 +26,14 @@ export class AppComponent implements OnInit {
 
   public setSidenav(drawerRef: MatSidenav) {
     this.drawerRef = drawerRef;
+  }
+
+  public search(event: Event) {
+    const el = event.target as HTMLInputElement;
+    this.searchText = el.value;
+  }
+
+  public toggleIsFavorite(e: MatCheckboxChange) {
+    this.onlyFavorite = e.checked;
   }
 }

@@ -5,6 +5,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './header/header.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { SharedModule } from './shared/shared.module';
+import { ProductCardComponent } from './product-card/product-card.component';
+import { ProductsFilterPipe } from './products-filter.pipe';
+import { ExchangeRatesComponent } from './header/exchange-rates/exchange-rates.component';
+import { ExchangeRatesDirective } from './header/exchange-rates/exchange-rates.directive';
+import { HiddenDirective } from './header/exchange-rates/hidden.directive';
 // NgModule, Directive, Pipe, Service
 // declarations - let, const
 // imports - import
@@ -13,7 +18,12 @@ import { SharedModule } from './shared/shared.module';
   declarations: [
     AppComponent,
     HeaderComponent,
-    SidenavComponent // Pipe, Directive
+    SidenavComponent,
+    ProductCardComponent,
+    ProductsFilterPipe,
+    ExchangeRatesComponent,
+    ExchangeRatesDirective,
+    HiddenDirective // Pipe, Directive
   ],
   imports: [
     BrowserModule,
