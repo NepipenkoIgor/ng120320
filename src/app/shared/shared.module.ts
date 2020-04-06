@@ -9,10 +9,12 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { CommonModule } from '@angular/common';
 
 
 @NgModule({
   exports: [
+    CommonModule,
     MatToolbarModule,
     MatSidenavModule,
     MatButtonModule,
@@ -23,7 +25,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatInputModule,
     MatProgressSpinnerModule,
     MatCheckboxModule
-  ]
+  ],
 })
 export class SharedModule {
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { IProduct, products$ } from './products';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable, of, Subject } from 'rxjs';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 import { ProductsService } from './products.service';
 

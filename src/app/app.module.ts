@@ -15,6 +15,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { environment } from '@env/environment';
 import { BASE_URL_TOKEN } from './config';
 import { CustomInterceptorService } from './custom-interceptor.service';
+import { ModalModule } from './modal/modal.module';
 // NgModule, Directive, Pipe, Service
 // declarations - let, const
 // imports - import
@@ -28,13 +29,14 @@ import { CustomInterceptorService } from './custom-interceptor.service';
     ProductsFilterPipe,
     ExchangeRatesComponent,
     ExchangeRatesDirective,
-    HiddenDirective // Pipe, Directive
+    HiddenDirective,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     SharedModule,
-    HttpClientModule
+    HttpClientModule,
+    ModalModule.forRoot()
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: CustomInterceptorService, multi: true},

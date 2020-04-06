@@ -8,7 +8,6 @@ import { IProduct } from './products';
 export class ProductsFilterPipe implements PipeTransform {
 
   public transform(products: IProduct[], text: string, onlyFavorite: boolean): unknown {
-    console.count('Filter');
     let result = products;
     if (onlyFavorite) {
       result = result.filter((product: IProduct) => product.isFavorite === onlyFavorite);
