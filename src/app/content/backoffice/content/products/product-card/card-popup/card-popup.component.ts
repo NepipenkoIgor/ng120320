@@ -1,8 +1,8 @@
 import { Component, NgModule } from '@angular/core';
-import { IProduct } from '../../products';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+import { IProduct } from '../../products.service';
 
 @Component({
   selector: 'app-card-popup',

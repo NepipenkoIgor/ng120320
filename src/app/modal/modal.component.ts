@@ -1,6 +1,6 @@
 import { Component, ComponentFactory, ComponentFactoryResolver, ComponentRef, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { ModalService } from './modal.service';
-import { HeaderComponent } from '../header/header.component';
+import { HeaderComponent } from '../content/backoffice/header/header.component';
 
 @Component({
   selector: 'app-modal',

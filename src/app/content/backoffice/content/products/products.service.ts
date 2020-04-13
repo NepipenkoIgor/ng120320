@@ -1,11 +1,15 @@
-import { IProduct } from './products';
 import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 
-// interface IHttp {
-//   get<T>(url: string): Observable<T>;
-// }
+export interface IProduct {
+  '_id': string;
+  'title': string;
+  'img': string;
+  'price': number;
+  'author': string;
+  'isFavorite': boolean;
+}
+
 @Injectable()
 export class ProductsService {
 

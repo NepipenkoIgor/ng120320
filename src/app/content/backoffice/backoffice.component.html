@@ -1,0 +1,7 @@
+<app-header [mainTitle]="title" [drawer]="drawerRef"></app-header>
+<app-sidenav [title]="title" (setSidenavControl)="setSidenav($event)">
+  <ng-template #content>
+   <router-outlet></router-outlet>
+  </ng-template>
+  <!-- <router-outlet>-->
+</app-sidenav>

@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { IProduct } from './products';
+import { IProduct } from './products.service';
 
 @Pipe({
   name: 'productsFilter',

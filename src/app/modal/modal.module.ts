@@ -7,7 +7,7 @@ import { ModalService } from './modal.service';
 @NgModule({
   declarations: [ModalComponent],
   imports: [
-    SharedModule
+    SharedModule.forChild()
   ],
   exports: [
     ModalComponent

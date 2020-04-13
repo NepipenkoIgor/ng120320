@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
-import { IProduct } from '../products';
-import { ModalService } from '../modal/modal.service';
+import { ModalService } from '../../../../../modal/modal.service';
 import { CardPopupComponent } from './card-popup/card-popup.component';
+import { IProduct } from '../products.service';
 
 @Component({
   selector: 'app-product-card',
