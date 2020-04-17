@@ -5,14 +5,16 @@ import { SharedModule } from '../../../../shared/shared.module';
 import { ProductsService } from './products.service';
 import { ProductCardComponent } from './product-card/product-card.component';
 import { RouterModule } from '@angular/router';
-
+import { OneProductComponent } from './one-product/one-product.component';
+import { ProductResolveService } from './one-product/product-resolve.service';
 
 
 @NgModule({
   declarations: [
     ProductsComponent,
     ProductsFilterPipe,
-    ProductCardComponent
+    ProductCardComponent,
+    OneProductComponent
   ],
   imports: [
     SharedModule.forChild(),
@@ -20,9 +22,20 @@ import { RouterModule } from '@angular/router';
       {
         path: '',
         component: ProductsComponent
+      },
+      {
+        path: ':productId',
+        component: OneProductComponent,
+        data: {
+          title: 'Product page'
+        },
+        resolve: {
+          product: ProductResolveService
+        }
       }
     ])
   ],
-  providers: [ProductsService]
+  providers: [ProductsService, ProductResolveService]
 })
-export class ProductsModule { }
+export class ProductsModule {
+}

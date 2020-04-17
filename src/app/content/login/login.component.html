@@ -1,1 +1,29 @@
-<p [routerLink]="['../signup']" >login works!</p>
+<div class="auth-content">
+  <mat-card>
+    <mat-card-content>
+      <div #loginForm="ngForm" ngForm>
+        <p>Log in to continue</p>
+        <mat-form-field>
+          <input matInput
+                 placeholder="User name" name="username" appUsernameValidator
+                 type="text" ngModel  #user="ngModel" required>
+          <mat-error *ngIf="user?.errors?.onlyLetters">
+      {{user?.errors?.onlyLetters}}
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput
+                 placeholder="Password" name="password"
+                 type="password" ngModel #c="ngModel" required minlength="8">
+          <mat-error *ngIf="c?.errors?.minlength">
+            You entered only {{c?.errors?.minlength?.actualLength}} symbols of {{c?.errors?.minlength?.requiredLength}}
+          </mat-error>
+        </mat-form-field>
+        <button mat-raised-button color="primary">Log In</button>
+        <a mat-button [routerLink]="['../signup']">Go to Sign Up!</a>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+{{user?.errors | json }}

@@ -1,6 +1,6 @@
 import { Inject, Injectable } from '@angular/core';
 import { HttpEvent, HttpHandler, HttpHeaders, HttpInterceptor, HttpRequest, HttpResponse } from '@angular/common/http';
-import { EMPTY, Observable } from 'rxjs';
+import { EMPTY, Observable, of } from 'rxjs';
 import { BASE_URL_TOKEN } from './config';
 import { catchError, filter, map } from 'rxjs/operators';
 
@@ -27,7 +27,10 @@ export class CustomInterceptorService implements HttpInterceptor {
       .pipe(
         filter(this.isHttpResponse),
         map((res) => res.clone({body: res?.body?.data})),
-        catchError(() => EMPTY)
+        catchError((err) => {
+          console.log(err);
+          return of(new HttpResponse({body: null}));
+        })
       );
   }
 

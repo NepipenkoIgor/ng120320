@@ -14,6 +14,8 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { CustomInterceptorService } from '../custom-interceptor.service';
 import { BASE_URL_TOKEN } from '../config';
 import { environment } from '@env/environment';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { UsernameValidatorDirective } from './directives/username-validator.directive';
 
 
 @NgModule({
@@ -29,8 +31,12 @@ import { environment } from '@env/environment';
     MatInputModule,
     MatProgressSpinnerModule,
     MatCheckboxModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    UsernameValidatorDirective
   ],
+  declarations: [UsernameValidatorDirective],
 })
 export class SharedModule {
   public static forRoot(): ModuleWithProviders {

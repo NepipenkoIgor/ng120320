@@ -23,5 +23,9 @@ export class ProductsService {
     return this.http.get<IProduct[]>(`/products`);
   }
 
+
+  public getProduct(productId: string) {
+    return this.http.get<IProduct | null>(`/products/${productId}`);
+  }
 }
 
