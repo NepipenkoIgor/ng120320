@@ -1,1 +1,55 @@
-<p (click)="goToLogin()">signup works!</p>
+<div class="auth-content">
+  <mat-card>
+    <mat-card-content>
+      <div [formGroup]="signUpForm">
+        <p>Sign up for continue</p>
+        <mat-form-field>
+          <input matInput formControlName="username"
+                 placeholder="User name" name="username">
+          <mat-error *ngIf="signUpForm.get('username')?.errors?.onlyLetters">
+            {{signUpForm.get('username')?.errors?.onlyLetters}}
+          </mat-error>
+        </mat-form-field>
+
+        <div fxLayout="row" fxLayoutAlign="space-around center"
+             *ngFor="let controlRef of getControls(signUpForm, 'emails'); index as i, first as f"
+        >
+          <mat-form-field fxFlex="90">
+            <input matInput [formControl]="controlRef" required
+                   placeholder="Email"
+                   type="text">
+          </mat-form-field>
+          <div fxFlex="10" fxLayout="row">
+            <mat-icon *ngIf="f" (click)="addEmail()">add</mat-icon>
+            <mat-icon (click)="removeEmail(i)"
+                      *ngIf="getControls(signUpForm, 'emails').length > 1"
+            >delete
+            </mat-icon>
+          </div>
+        </div>
+
+        <div fxLayout="row" fxLayoutAlign="start center">
+          <span>Male</span>
+          <app-ios-switcher formControlName="male"></app-ios-switcher>
+        </div>
+
+        <div formGroupName="password">
+          <mat-form-field>
+            <input matInput formControlName="password"
+                   placeholder="Password" name="password"
+                   type="password">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput formControlName="cpassword"
+                   placeholder="Confirm password" name="cpassword"
+                   type="password">
+          </mat-form-field>
+        </div>
+        <button mat-raised-button color="primary" [disabled]="signUpForm.invalid || signUpForm.pending">Sign Up</button>
+        <a mat-button (click)="goToLogin()">Go to Sign Up!</a>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+<pre>{{signUpForm.value | json}}</pre>

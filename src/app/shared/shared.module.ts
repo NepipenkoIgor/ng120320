@@ -16,7 +16,7 @@ import { BASE_URL_TOKEN } from '../config';
 import { environment } from '@env/environment';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UsernameValidatorDirective } from './directives/username-validator.directive';
-
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   exports: [
@@ -34,7 +34,8 @@ import { UsernameValidatorDirective } from './directives/username-validator.dire
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    UsernameValidatorDirective
+    UsernameValidatorDirective,
+    FlexLayoutModule
   ],
   declarations: [UsernameValidatorDirective],
 })
