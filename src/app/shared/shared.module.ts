@@ -17,6 +17,7 @@ import { environment } from '@env/environment';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UsernameValidatorDirective } from './directives/username-validator.directive';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatBadgeModule } from '@angular/material/badge';
 
 @NgModule({
   exports: [
@@ -35,7 +36,11 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     FormsModule,
     ReactiveFormsModule,
     UsernameValidatorDirective,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatBadgeModule
+  ],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: CustomInterceptorService, multi: true},
   ],
   declarations: [UsernameValidatorDirective],
 })
@@ -51,10 +56,7 @@ export class SharedModule {
   }
   public static forChild(): ModuleWithProviders {
     return {
-      ngModule: SharedModule,
-      providers: [
-        {provide: HTTP_INTERCEPTORS, useClass: CustomInterceptorService, multi: true},
-      ],
+      ngModule: SharedModule
     };
   }
 }

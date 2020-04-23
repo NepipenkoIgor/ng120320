@@ -10,7 +10,9 @@ export interface IProduct {
   'isFavorite': boolean;
 }
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class ProductsService {
 
   public constructor(

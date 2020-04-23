@@ -6,7 +6,7 @@ import { CartComponent } from './cart.component';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [CartComponent],
   imports: [
     SharedModule.forChild(),
     RouterModule.forChild([

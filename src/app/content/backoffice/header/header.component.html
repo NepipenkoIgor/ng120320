@@ -1,7 +1,12 @@
-<mat-toolbar color="primary">
-  <button mat-button (click)="toggleDrawer()">
-    <mat-icon>view_headline</mat-icon>
-  </button>
-  <h3>{{mainTitle}}</h3>
-  <app-exchange-rates [bankingRates]="rates" ></app-exchange-rates>
+<mat-toolbar color="primary" fxLayout="row" fxLayoutAlign="space-between center">
+  <div fxLayout="row" fxLayoutAlign="space-between center">
+    <button mat-button (click)="toggleDrawer()">
+      <mat-icon>view_headline</mat-icon>
+    </button>
+    <h3>{{mainTitle}}</h3>
+    <app-exchange-rates [bankingRates]="rates"></app-exchange-rates>
+  </div>
+  <mat-icon
+    [matBadge]="totalCount$ | async" matBadgeColor="warn"
+    [routerLink]="['/backoffice/cart']">shopping_cart</mat-icon>
 </mat-toolbar>

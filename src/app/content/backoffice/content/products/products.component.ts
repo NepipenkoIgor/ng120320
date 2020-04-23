@@ -3,6 +3,9 @@ import { Observable } from 'rxjs';
 import { IProduct, ProductsService } from './products.service';
 import { MatSidenav } from '@angular/material/sidenav';
 import { MatCheckboxChange } from '@angular/material/checkbox';
+import { Store } from '@ngrx/store';
+import { IRootState } from '../../../../store';
+import { getProductsPending } from '../../../../store/actions/products.action';
 
 @Component({
   selector: 'app-products',
@@ -14,17 +17,22 @@ export class ProductsComponent implements OnInit {
   public searchText: string;
   public onlyFavorite: boolean;
 
-  public products$: Observable<IProduct[]> = this.productsService.getProducts();
+  public products$: Observable<IProduct[]> = this.store.select('products');
 
   public constructor(
-    private  productsService: ProductsService
+    private readonly store: Store<IRootState>,
   ) {
   }
 
   ngOnInit() {
+    this.store.dispatch(getProductsPending());
     // this.products$.subscribe((products) => {
     //   this.products = products;
     // });
+
+    setTimeout(()=>{
+      this.store.dispatch(getProductsPending());
+    }, 7000)
   }
 
   public search(event: Event) {

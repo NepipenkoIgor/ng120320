@@ -22,3 +22,4 @@ export class ModalService {
     return this.modalSequence$$.asObservable();
   }
 }
+

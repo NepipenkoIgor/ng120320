@@ -2,6 +2,9 @@ import { Component, Input } from '@angular/core';
 import { ModalService } from '../../../../../modal/modal.service';
 import { CardPopupComponent } from './card-popup/card-popup.component';
 import { IProduct } from '../products.service';
+import { Store } from '@ngrx/store';
+import { IRootState } from '../../../../../store';
+import { addProductToCart } from '../../../../../store/actions/cart.action';
 
 @Component({
   selector: 'app-product-card',
@@ -17,7 +20,8 @@ export class ProductCardComponent {
   public isOdd!: boolean;
 
   constructor(
-    private  modalService: ModalService
+    private  modalService: ModalService,
+    private  store: Store<IRootState>,
   ) {
   }
 
@@ -30,6 +34,7 @@ export class ProductCardComponent {
         product: this.product,
         save: () => {
           console.log('Save');
+          this.store.dispatch(addProductToCart({product: this.product}));
           this.modalService.close();
         },
         close: () => {

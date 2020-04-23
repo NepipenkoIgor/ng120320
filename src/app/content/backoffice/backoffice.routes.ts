@@ -1,6 +1,7 @@
 export const backOfficeRoutes = [
     {
       path: '',
+      pathMatch: 'full',
       loadChildren: () => import('./content/products/products.module')
         .then((m) => m.ProductsModule)
     },
