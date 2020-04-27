@@ -5,6 +5,18 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { decrementProductInCart, incrementProductInCart, removeProductFromCart } from '../../../../store/actions/cart.action';
 
+
+class User {
+  constructor(
+    public name: string
+  ) {
+  }
+
+  public getDate() {
+    return Date.now();
+  }
+}
+
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
@@ -13,6 +25,9 @@ import { decrementProductInCart, incrementProductInCart, removeProductFromCart }
 export class CartComponent implements OnInit {
 
   public products$: Observable<ICartProduct[]> = this.store.select(cartProducts);
+
+  public user1 = new User('Ihor');
+  public user2 = new User('Eugene');
 
   public constructor(
     private store: Store<IRootState>
@@ -23,9 +38,14 @@ export class CartComponent implements OnInit {
     this.products$.subscribe((v) => {
       console.log(v);
     });
+
+    setTimeout(() => {
+       this.user2.name = 'Ihor';
+      // this.user2 = new User('Den')
+    }, 5000);
   }
 
-  public decrement(id: string, count): void {
+  public decrement({id, count}): void {
     if (count === 1) {
       this.remove(id);
       return;

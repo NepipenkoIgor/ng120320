@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ExchangeRatesComponent } from './exchange-rates.component';
+import { DefaultComponent } from './default.component';
 
-describe('ExchangeRatesComponent', () => {
-  let component: ExchangeRatesComponent;
-  let fixture: ComponentFixture<ExchangeRatesComponent>;
+describe('DefaultComponent', () => {
+  let component: DefaultComponent;
+  let fixture: ComponentFixture<DefaultComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ExchangeRatesComponent ]
+      declarations: [ DefaultComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ExchangeRatesComponent);
+    fixture = TestBed.createComponent(DefaultComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

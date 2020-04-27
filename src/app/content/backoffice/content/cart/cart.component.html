@@ -1,11 +1,9 @@
-<div *ngFor="let product of products$ | async; trackBy: trackById"
-     fxLayout="row" fxLayoutAlign="space-around center">
-  <img [src]="product.img">
-  <div fxLayout="row" fxLayoutAlign="space-between center">
-    <mat-icon (click)="decrement(product._id, product.count)">remove</mat-icon>
-    <p>{{product.count}}</p>
-    <mat-icon (click)="increment(product._id)">add</mat-icon>
-  </div>
-  <p>{{product.price}}</p>
-  <mat-icon (click)="remove(product._id)">delete</mat-icon>
-</div>
+<app-cart-product
+  *ngFor="let product of products$ | async; trackBy: trackById"
+  [product]="product" (increment)="increment($event)"
+  (decrement)="decrement($event)" (remove)="remove($event)">
+</app-cart-product>
+
+
+<!--<app-default [user]="user1"></app-default>-->
+<!--<app-on-push [user]="user2"></app-on-push>-->
